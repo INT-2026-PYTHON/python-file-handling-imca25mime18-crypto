@@ -42,3 +42,23 @@ The longest is "malayalam" with 9 characters.
 =================================================
 
 """
+
+with open("sowpods.txt", "r") as file:
+    words = [line.strip().lower() for line in file]
+
+palindromes = [word for word in words if word == word[::-1]]
+
+if palindromes:
+   
+    max_length = max(len(word) for word in palindromes)
+
+
+    longest_palindromes = [
+        word for word in palindromes if len(word) == max_length
+    ]
+
+    print(f"Longest palindrome length: {max_length}")
+    for word in sorted(longest_palindromes):
+        print(word)
+else:
+    print("No palindrome words found.")
